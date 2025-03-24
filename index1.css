@@ -1,0 +1,16 @@
+/* 태그 선택자 */
+h1 {
+    background-color: orange;
+    color: white;
+    font-size: 80px;
+}
+
+/* class 선택자 */
+.div1 {
+    color: red;
+}
+
+/* id 선택자 */
+#div2 {
+    color: blue;
+}
