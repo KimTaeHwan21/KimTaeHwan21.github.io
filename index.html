@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김태환 자기소개</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#playlist">Playlist</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <h2>Intro</h2>
+    <div class="imac-frame">
+      <div class="toolbar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="explorer intro-explorer">
+        <img src="image/image1.jpg" alt="프로필 이미지" class="intro-img" onclick="openIntroModal()">
+        <div class="intro-box">
+          <p><span class="label">이름</span> 김태환</p>
+          <p><span class="label">생년월일</span> 02.02.26</p>
+          <p><span class="label">거주지</span> 경기도 고양시</p>
+          <p><span class="label">학교/전공</span> 국민대학교 / 정보보안암호수학과 & 소프트웨어학부</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="introModal" class="modal">
+    <div class="modal-content">
+      <div class="toolbar">
+        <span class="dot red" onclick="closeModal()"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="modal-body">
+        <img class="modal-img" src="image/image1.jpg">
+        <div class="modal-text">
+          <h2>Intro</h2>
+          <p>
+            안녕하세요! 국민대학교 정보보안암호수학과 21학번 김태환입니다!<br>
+            현재 소프트웨어학부로 복수전공하고 있고 멋쟁이사자처럼 13기에 들어오게 되었습니다!<br>
+            보안 분야만 했어서 개발 활동은 처음이지만 열심히 노력하고 성장하여 좋은 모습 보여드리겠습니다!<br>
+            다들 잘 부탁드려요~!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-img" id="modalImage">
+  </div>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="imac-frame">
+      <div class="toolbar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="explorer">
+        <div class="sidebar">
+          <div class="folder" onclick="toggleFolder('hobby-list')">
+            <img src="icon_image/folder-icon.png" alt="folder"> Hobby
+          </div>
+          <div id="hobby-list" class="subfolder-list">
+            <div class="subfolder" onclick="showContent('fitness')">
+              <img src="icon_image/folder-icon.png" alt="sub"> fitness
+            </div>
+            <div class="subfolder" onclick="showContent('game')">
+              <img src="icon_image/folder-icon.png" alt="sub"> game
+            </div>
+            <div class="subfolder" onclick="showContent('travel')">
+              <img src="icon_image/folder-icon.png" alt="sub"> travel
+            </div>
+          </div>
+          <div class="folder" onclick="toggleFolder('favorite-list')">
+            <img src="icon_image/folder-icon.png" alt="folder"> Favorite
+          </div>
+          <div id="favorite-list" class="subfolder-list">
+            <div class="subfolder" onclick="showContent('sky_photo')">
+              <img src="icon_image/folder-icon.png" alt="sub"> sky photo
+            </div>
+            <div class="subfolder" onclick="showContent('food')">
+              <img src="icon_image/folder-icon.png" alt="sub"> food
+            </div>
+            <div class="subfolder" onclick="showContent('dog')">
+              <img src="icon_image/folder-icon.png" alt="sub"> my dog
+            </div>
+          </div>
+        </div>
+        <div class="preview" id="imagePreview"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="playlist">
+    <h2>Playlist</h2>
+    <div class="imac-frame">
+      <div class="toolbar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="playlist-container">
+        <div class="player-left">
+          <img src="music/music1.jpg" class="cover" id="cover">
+          <audio id="audio" controls></audio>
+        </div>
+        <div class="player-right">
+          <h3>My Playlist</h3>
+          <ul id="trackList">
+            <li onclick="selectTrack(0)"><img src="music/music1.jpg"> <strong>오늘도 그대만</strong><br><span class="artist">타디스 프로젝트</span></li>
+            <li onclick="selectTrack(1)"><img src="music/music2.jpg"> <strong>관계</strong><br><span class="artist">한동근</span></li>
+            <li onclick="selectTrack(2)"><img src="music/music3.jpg"> <strong>다시는 사랑하지 않고, 이별에 아파하기 싫어</strong><br><span class="artist">백지영</span></li>
+            <li onclick="selectTrack(3)"><img src="music/music4.jpg"> <strong>모르시나요</strong><br><span class="artist">조째즈</span></li>
+            <li onclick="selectTrack(4)"><img src="music/music5.jpg"> <strong>살기 위해서</strong><br><span class="artist">노을</span></li>
+            <li onclick="selectTrack(5)"><img src="music/music6.jpg"> <strong>흔한 이별</strong><br><span class="artist">허각</span></li>
+            <li onclick="selectTrack(6)"><img src="music/music7.jpg"> <strong>우린 어쩌다 헤어진 걸까</strong><br><span class="artist">허각</span></li>
+            <li onclick="selectTrack(7)"><img src="music/music8.jpg"> <strong>웃으며</strong><br><span class="artist">임재현</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="imac-frame">
+      <div class="toolbar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="explorer contact-info">
+        <div class="contact-item">
+          <img src="image/phone.png" alt="Phone Icon">
+          <span>010-6587-2194</span>
+        </div>
+        <div class="contact-item">
+          <img src="image/email.png" alt="Email Icon">
+          <span>th2194@gmail.com</span>
+        </div>
+        <div class="sns">
+          <a href="https://instagram.com/convert_kim" target="_blank">
+            <img src="icon_image/instagram.png" alt="Instagram">
+            <p>Instagram</p>
+          </a>
+          <a href="https://github.com/KimTaeHwan21" target="_blank">
+            <img src="icon_image/github.png" alt="GitHub">
+            <p>GitHub</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <img src="image/lion.png" alt="멋사 로고" class="footer-logo">
+    <p>© 2025 - TaeHwan</p>
+  </footer>
+
+  <script>
+    const contents = {
+      fitness: {
+        img1: 'image/fit1.jpg',
+        img2: 'image/fit2.jpg',
+        title: 'Fitness',
+        desc: `20대 초반에 바디프로필 찍는게 버킷리스트였는데 열심히 운동하여 작년 여름에 찍었고 우연치 않은 기회로 보디빌딩 대회까지 1등 한 경험이 있어요. 예전에 운동 선수였어서 헬스말고 다른 운동도 좋아하니까 좋아하는 운동 있으면 같이해요!`
+      },
+      game: {
+        img1: 'image/game1.png',
+        img2: 'image/game2.jpg',
+        title: 'Game',
+        desc: `저는 롤, 피파, 옵치, 배그, 발로 등 각종 게임 다 하구여 현재 깔려있는 게임은 롤, 피파, 발로, 스팀 게임들이 깔려있어요. 핸드폰으로는 사과게임 자주해요~ 게임 좋아하면 어떤 게임이든 안 가리고 하는 잡종이니까 같이 할 수 있으면 좋겠습니다~`
+      },
+      travel: {
+        img1: 'image/travel1.jpg',
+        img2: 'image/travel2.jpg',
+        title: 'Travel',
+        desc: `작년 겨울에 눈이 엄청오는 삿포로를 갔다왔어요~ 진짜 평생 볼 눈을 삿포로에서 다 본 듯한 느낌..? 그 정도로 너무 좋았어요~ 꼭 가보세요! 제주도도 자주가는 지역 중 하나입니다~ 근데 부산을 안 가봤다는 점.... 누가 저 좀 데리고 부산 좀 가주세요 ㅜ 최근 낭만 여행을 갔다왔는데 인스타 보시면 릴스 올려놨으니 구경해주세요~`
+      },
+      sky_photo: {
+        img1: 'image/sky1.jpg',
+        img2: 'image/sky2.jpg',
+        title: 'Sky Photo',
+        desc: '저는 하늘이 이쁘면 사진을 찍는 버릇..?이 있는데 사진 고자이지만 예쁜 하늘 보면 참을 수 없어서 그만,, 사진 잘 찍는 방법 알려주시면 배우겠습니담'
+      },
+      food: {
+        img1: 'image/food1.jpg',
+        img2: 'image/food2.jpg',
+        title: 'Food',
+        desc: '저는 진짜 음식을 좋아해서 음식에 돈을 절대 아끼지 않는 편이고 특히 맛집 탐방 좋아해요. 디저트도 안 가리고 맛집 탐방하는 편이랍니다~'
+      },
+      dog: {
+        img1: 'image/dog1.jpg',
+        img2: 'image/dog2.jpg',
+        title: 'My Dog',
+        desc: "저의 강아지 '체리'인데요 올해로 10살이지만 나이가 들면 들수록 징징대는게 더 심해지는.... 피곤한 st... 그래도 귀여우니까 봐주고 있어요~ 강쥐 보고 싶으면 학교 한번 데려갈게요 말해주세요~!"
+      },
+    };
+
+    function toggleFolder(id) {
+      document.getElementById(id).classList.toggle('active');
+    }
+
+    function showContent(key) {
+      const container = document.getElementById('imagePreview');
+      container.innerHTML = `
+        <div class="folder-view">
+          <div class="folder-images">
+            <img src="${contents[key].img1}" onclick="openImageModal('${contents[key].img1}')">
+            <img src="${contents[key].img2}" onclick="openImageModal('${contents[key].img2}')">
+          </div>
+          <div class="folder-desc">
+            <h3>${contents[key].title}</h3>
+            <p>${contents[key].desc}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function openIntroModal() {
+      document.getElementById('introModal').style.display = 'block';
+    }
+
+    function openImageModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'block';
+      modalImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('introModal').style.display = 'none';
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+    });
+    
+  const audio = document.getElementById('audio');
+  const cover = document.getElementById('cover');
+  const tracks = [
+    { title: '오늘도 그대만', file: 'music/music1.mp3', img: 'music/music1.jpg' },
+    { title: '관계', file: 'music/music2.mp3', img: 'music/music2.jpg' },
+    { title: '다시는 사랑하지 않고, 이별에 아파하기 싫어', file: 'music/music3.mp3', img: 'music/music3.jpg' },
+    { title: '모르시나요', file: 'music/music4.mp3', img: 'music/music4.jpg' },
+    { title: '살기 위해서', file: 'music/music5.mp3', img: 'music/music5.jpg' },
+    { title: '흔한 이별', file: 'music/music6.mp3', img: 'music/music6.jpg' },
+    { title: '우린 어쩌다 헤어진 걸까', file: 'music/music7.mp3', img: 'music/music7.jpg' },
+    { title: '웃으며', file: 'music/music8.mp3', img: 'music/music8.jpg' },
+  ];
+  let currentIndex = 0;
+
+  function selectTrack(index) {
+    currentIndex = index;
+    audio.src = tracks[index].file;
+    cover.src = tracks[index].img;
+    audio.play();
+  }
+
+  audio.addEventListener('ended', () => {
+    currentIndex = (currentIndex + 1) % tracks.length;
+    selectTrack(currentIndex);
+  });
+  </script>
+</body>
+</html>
