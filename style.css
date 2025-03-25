@@ -1,0 +1,816 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Noto+Sans+KR&display=swap');
+
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SUIT', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  background-image: linear-gradient(
+      in oklch longer hue to right,
+      oklch(0.2 0.05 var(--hue1) / 90%),
+      oklch(0.2 0.05 var(--hue2) / 90%)
+    ),
+    linear-gradient(
+      in oklch longer hue to bottom,
+      oklch(0.2 0.05 var(--hue1) / 90%),
+      oklch(0.2 0.05 var(--hue2) / 90%)
+    );
+  background-size: 100% 100%;
+  animation: anim_bg 10s linear infinite;
+}
+
+/* 배경 애니메이션 */
+@property --hue1 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --hue2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes anim_bg {
+  0% {
+    --hue1: 200deg;
+    --hue2: 260deg;
+  }
+  100% {
+    --hue1: 560deg;
+    --hue2: 620deg;
+  }
+}
+
+
+.section-title {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  z-index: 5;
+  opacity: 0.85;
+  letter-spacing: 1px;
+}
+
+/* dark mode title color */
+.section-title {
+  color: #ffffff;
+}
+
+/* light mode title color */
+.light-mode .section-title {
+  color: #222222;
+}
+
+/* 공통 섹션 및 카드 스타일 */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.page.active {
+  display: flex;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 700px;
+  text-align: center;
+}
+
+
+
+/* 프로필 카드 */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+}
+
+
+
+.info-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-links a {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.contact-links a:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.contact-links img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+
+
+/* About Me */
+.intro-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 900px;
+  text-align: left;
+  padding: 2rem;
+}
+
+.intro-img {
+  width: 230px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.intro-text h2 {
+  font-family: 'Cafe24SsurroundAir', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+
+
+
+
+/* theme transition */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#theme-label {
+  font-size: 0.65rem;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* light mode */
+.light-mode body {
+  font-family: "Geist", sans-serif;
+  background-image: linear-gradient(
+      in oklch longer hue to right,
+      oklch(0.93 0.08 var(--hue1) / 50%),
+      oklch(0.93 0.08 var(--hue2) / 50%)
+    ),
+    linear-gradient(
+      in oklch longer hue to bottom,
+      oklch(0.93 0.08 var(--hue1) / 50%),
+      oklch(0.93 0.08 var(--hue2) / 50%)
+    );
+  color: PaleVioletRed;
+}
+
+.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  color: #333;
+}
+
+.light-mode .nav-bar button,
+.light-mode .contact-links a,
+.light-mode .theme-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.mode-label {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  font-size: 12px;
+  font-weight: 300;
+  color: #ddd;
+  opacity: 0.8;
+  text-align: right;
+  z-index: 1000;
+  font-family: 'Orbitron', sans-serif;
+  pointer-events: none; /* 클릭 방지 */
+}
+
+.light-mode .mode-label {
+  color: #333;
+  opacity: 0.8;
+}
+
+
+
+
+/* Hobby & Favorite */
+.hobby-card, .favorite-card {
+  flex: 1;
+  min-width: 320px;
+  max-width: 3000px;
+  min-height: 460px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.hobby-fav-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.section-img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+/* Hobby & Favorite title */
+#hobby .section-title {
+  top: 20px;
+  font-size: 2rem;
+}
+
+/* Hobby & Favorite title color */
+.hobby-title {
+  color: #78dbe2;
+}
+.favorite-title {
+  color: #f8cfcf;
+}
+
+
+/* toggle */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btn-group button {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-group button:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
+
+/* Detail Card title */
+.hobby-title, .favorite-title {
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Detail Card */
+.detail-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  width: 85%;
+  padding: 2rem;
+  z-index: 999;
+  display: none;
+  text-align: center;
+}
+
+.detail-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* Detail Card title color */
+.detail-title-hobby {
+  color: #78dbe2;
+}
+.detail-title-favorite {
+  color: #f8cfcf;
+}
+
+/* light, dark mode title color transition */
+.hobby-title {
+  color: #78dbe2;
+}
+.favorite-title {
+  color: #f8cfcf;
+}
+
+.light-mode .hobby-title {
+  color: #219ebc;
+}
+.light-mode .favorite-title {
+  color: #f4978e;
+}
+
+/* Detail Card image */
+.detail-images {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-images img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.detail-images img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Hobby card background */
+.light-mode .hobby-card {
+  background: linear-gradient(to bottom right, rgba(224, 248, 255, 0.6), rgba(255, 255, 255, 0.6));
+}
+
+/* Favorite card background */
+.light-mode .favorite-card {
+  background: linear-gradient(to bottom right, rgba(255, 235, 240, 0.6), rgba(255, 255, 255, 0.6));
+}
+
+/* Hobby & Favorite detail toggle */
+.light-mode .btn-group button {
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.light-mode .btn-group button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+/* X button */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* full image modal */
+#fullImageModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+#fullImageModal .modal-full-image {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  object-fit: contain;
+  z-index: 1;
+}
+
+#fullImageModal .modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 110000;
+  background: none;
+  border: none;
+}
+
+/* modal navigation hiden */
+body.modal-active .nav-bar {
+  display: none !important;
+}
+
+
+
+/* Playlist */
+.playlist-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+/* left list */
+.playlist-left {
+  flex: 1;
+  min-width: 280px;
+  max-width: 360px;
+}
+
+.playlist-left h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+#trackList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#trackList li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 0.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 260px;
+  max-width: 340px;
+}
+
+#trackList li:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Light Mode list */
+.light-mode #trackList li {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.light-mode #trackList li:hover {
+  background: rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  max-width: 180px;
+  text-align: left;
+}
+
+.text strong {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+  max-width: 100%;
+}
+
+li.no-wrap .text {
+  max-width: 180px;
+}
+li.no-wrap .text strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text small {
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
+.light-mode .text small {
+  color: #777;
+}
+
+/* right player */
+.playlist-right {
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1.5rem 1rem;
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.playlist-right h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+/* Light Mode text color */
+.light-mode .playlist-right h3,
+.light-mode .now-info h4,
+.light-mode .now-info p {
+  color: #222 !important;
+}
+
+.now-cover-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 1rem;
+}
+
+.now-cover {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.5);
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  animation: rotate 8s linear infinite;
+  animation-play-state: paused;
+}
+
+.now-cover.playing {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* start & stop image */
+.play-pause-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  z-index: 5;
+}
+
+.now-cover-wrapper:not(:hover) .play-pause-icon {
+  opacity: 0;
+}
+
+/* music info */
+.now-info h4 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.now-info p {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* music bar */
+#progressBar {
+  width: 100%;
+  margin-top: 1rem;
+  accent-color: #ffffff;
+}
+
+.light-mode #progressBar {
+  accent-color: #333;
+}
+
+/* music clock */
+#timeDisplay {
+  font-size: 0.75rem;
+  margin-top: 0.4rem;
+  color: #ccc;
+  letter-spacing: 0.5px;
+}
+
+.light-mode #timeDisplay {
+  color: #666;
+}
+
+
+
+
+
+
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.modal-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-content {
+  max-width: 60%;
+  max-height: 60%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+  box-shadow: 0 0 10px white;
+  margin: auto;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+/* navigation bar */
+.nav-bar {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  z-index: 10;
+}
+
+.nav-bar button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.7rem 1.4rem;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s;
+  font-size: 14px;
+}
+
+.nav-bar button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+
+/* toggle-button */
+.toggle-button {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode .toggle-button {
+  color: #444;
+  background-color: rgba(0, 0, 0, 0.05);
+}
