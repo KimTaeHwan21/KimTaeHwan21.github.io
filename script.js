@@ -17,7 +17,7 @@ function showPage(id) {
 function openModal(imgSrc) {
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImage');
-  modal.style.display = 'flex';
+  modal.style.display = 'flex'; // 중앙 정렬을 위해 flex
   modalImg.src = imgSrc;
 }
 
