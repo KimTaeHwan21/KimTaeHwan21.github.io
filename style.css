@@ -507,6 +507,9 @@ body.modal-active .nav-bar {
   padding: 2rem;
   max-width: 1000px;
   flex-wrap: wrap;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+  box-sizing: border-box;
 }
 
 /* left list */
@@ -514,6 +517,7 @@ body.modal-active .nav-bar {
   flex: 1;
   min-width: 280px;
   max-width: 360px;
+  overflow-y: auto;
 }
 
 .playlist-left h2 {
@@ -612,6 +616,9 @@ li.no-wrap .text strong {
   border-radius: 30px;
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  max-height: calc(100vh - 140px);
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .playlist-right h3 {
