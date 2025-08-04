@@ -184,7 +184,7 @@ body {
   gap: 2rem;
   max-width: 900px;
   text-align: left;
-  padding: 2rem;
+  padding: 2.5rem;
 }
 
 .intro-img {
@@ -206,9 +206,11 @@ body {
   font-weight: 300;
 }
 
-.about-text {
+
+.about-text p {
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
   white-space: pre-line;
 }
 
