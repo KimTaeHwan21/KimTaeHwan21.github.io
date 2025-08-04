@@ -184,7 +184,7 @@ body {
   gap: 2rem;
   max-width: 900px;
   text-align: left;
-  padding: 2.5rem;
+  padding: 2rem;
 }
 
 .intro-img {
@@ -196,16 +196,14 @@ body {
 
 .intro-text h2 {
   font-family: 'Cafe24SsurroundAir', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .intro-text p {
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 300;
-  margin-bottom: 1.2rem;
-  white-space: pre-line;
 }
 
 
