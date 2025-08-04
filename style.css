@@ -206,16 +206,7 @@ body {
 .intro-text p {
   font-size: 1rem;
   line-height: 1.6;
-  font-weight: 300;
-  margin-bottom: 1.2rem;
-  word-break: keep-all;
-}
-
-
-.about-text p {
-  line-height: 1.8;
-  margin-bottom: 1.2rem;
-  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
   white-space: pre-line;
 }
 
